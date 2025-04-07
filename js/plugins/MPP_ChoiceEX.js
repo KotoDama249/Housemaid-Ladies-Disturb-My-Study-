@@ -324,7 +324,7 @@ Game_Interpreter.prototype.addChoices = function(params, i, data, d) {
 };
 
 Game_Interpreter.prototype.getHelpText = function(c, i, data) {
-    var command = MPPlugin.EventComment.ChoiceHelp || '選択肢ヘルプ';
+    var command = MPPlugin.EventComment.ChoiceHelp || "Choice Help";
     if (this._list[i].code === 108 && this._list[i].parameters[0] === command) {
         var texts = [];
         while (this._list[i + 1].code === 408) {

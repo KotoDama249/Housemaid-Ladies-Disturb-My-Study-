@@ -168,8 +168,8 @@
     //=============================================================================
     // パラメータの取得と整形
     //=============================================================================
-    var paramAlwaysDash           = getParamBoolean(['AlwaysDash', '常時ダッシュ']);
-    var paramCommandRemember      = getParamBoolean(['CommandRemember', 'コマンド記憶']);
+    var paramAlwaysDash           = getParamBoolean(['AlwaysDash', "Always dash"]);
+    var paramCommandRemember      = getParamBoolean(['CommandRemember', "Command memory"]);
     var paramBgmVolume            = getParamNumber(['BgmVolume', 'BGM音量'], 0, 100);
     var paramBgsVolume            = getParamNumber(['BgsVolume', 'BGS音量'], 0, 100);
     var paramMeVolume             = getParamNumber(['MeVolume', 'ME音量'], 0, 100);

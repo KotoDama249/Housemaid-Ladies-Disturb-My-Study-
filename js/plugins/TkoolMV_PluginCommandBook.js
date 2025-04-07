@@ -807,7 +807,7 @@
     Game_Interpreter.prototype.pluginCommandBook_レベルの変更 = function(args) {
         var actorId = parseInt(args[0], 10);
         var level = parseInt(args[1], 10) || 1;
-        var show = {"表示":true,"非表示":false,"はい":true,"いいえ":false}[args[2]||'表示'];
+        var show = {"表示":true,"非表示":false,"Yes":true,"No":false}[args[2]||'表示'];
         show = show === null ? false : show;
         console.log(show);
         if (actorId == 0) {
