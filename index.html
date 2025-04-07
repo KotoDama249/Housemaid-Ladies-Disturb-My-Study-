@@ -8,7 +8,29 @@
         <link rel="icon" href="icon/icon.png" type="image/png">
         <link rel="apple-touch-icon" href="icon/icon.png">
         <link rel="stylesheet" type="text/css" href="fonts/gamefont.css">
-        <title>家事代行</title>
+        <title>Housemaid Ladies Disturb My Study!</title>
+        
+        <!-- Add the custom script here -->
+        <script>
+            window.addEventListener('load', function() {
+                // Check if there is a saved game in localStorage
+                if (!localStorage.getItem('rpgsave')) {
+                    // If no saved game, fetch and store the default save file
+                    fetch('save/file2.rpgsave')  <!-- Updated file name -->
+                        .then(response => response.blob())
+                        .then(data => {
+                            // Store the default save file in localStorage
+                            localStorage.setItem('rpgsave', URL.createObjectURL(data));
+                            console.log("Loaded default save file.");
+                        })
+                        .catch(error => {
+                            console.error("Failed to load default save file:", error);
+                        });
+                } else {
+                    console.log("Loaded saved game from local storage.");
+                }
+            });
+        </script>
     </head>
     <body style="background-color: black">
         <script type="text/javascript" src="js/libs/pixi.js"></script>
