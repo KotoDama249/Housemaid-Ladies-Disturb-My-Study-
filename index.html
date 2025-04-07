@@ -15,12 +15,18 @@
             window.addEventListener('load', function() {
                 // Check if there is a saved game in localStorage
                 if (!localStorage.getItem('rpgsave')) {
-                    // If no saved game, fetch and store the default save file
-                    fetch('https://raw.githubusercontent.com/KotoDama249/Housemaid-Ladies-Disturb-My-Study-/main/save/file2.rpgsave')
-                        .then(response => response.blob())
+                    // If no saved game, fetch and store the default save file using GitHub API
+                    fetch('https://api.github.com/repos/KotoDama249/Housemaid-Ladies-Disturb-My-Study-/main/save/file2.rpgsave')
+                        .then(response => response.json())
                         .then(data => {
+                            // Decode the file content from Base64
+                            const saveFileData = atob(data.content);
+                            
+                            // Convert it into a Blob
+                            const blob = new Blob([new Uint8Array([...saveFileData].map(c => c.charCodeAt(0)))], { type: 'application/octet-stream' });
+        
                             // Store the default save file in localStorage
-                            localStorage.setItem('rpgsave', URL.createObjectURL(data));
+                            localStorage.setItem('rpgsave', URL.createObjectURL(blob));
                             console.log("Loaded default save file.");
                         })
                         .catch(error => {
@@ -30,7 +36,7 @@
                     console.log("Loaded saved game from local storage.");
                 }
             });
-        </script>
+        </script>        
         
     </head>
     <body style="background-color: black">
